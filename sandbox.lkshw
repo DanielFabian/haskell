@@ -1,0 +1,10 @@
+Version of workspace file format:
+               1
+Time of storage:
+               "Sat Aug 18 21:46:15 CEST 2012"
+Name of the workspace:
+               "sandbox"
+File paths of contained packages:
+               ["leksah-welcome/leksah-welcome.cabal"]
+Maybe file path of an active package:
+               Just "leksah-welcome/leksah-welcome.cabal"
