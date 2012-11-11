@@ -1,10 +1,10 @@
 Version of workspace file format:
                1
 Time of storage:
-               ""
+               "Sat Aug 18 22:11:14 CEST 2012"
 Name of the workspace:
                "ProjectEulerSolutions"
 File paths of contained packages:
-               []
+               ["ProjectEulerSolutions/ProjectEulerSolutions.cabal"]
 Maybe file path of an active package:
-               Nothing
+               Just "ProjectEulerSolutions/ProjectEulerSolutions.cabal"
