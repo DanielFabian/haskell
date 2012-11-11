@@ -4,7 +4,6 @@ cabal-version: >=1.2
 build-type: Simple
 license: AllRightsReserved
 license-file: ""
-description:  
 data-dir: ""
  
 library
@@ -13,12 +12,12 @@ library
     exposed: True
     buildable: True
     hs-source-dirs: src
-    other-modules: IntermediateExecises Problems1_10
+    other-modules: Problems11_20 IntermediateExecises Problems1_10
  
 executable Tutorial
     build-depends: base -any
     main-is: Main.hs
     buildable: True
     hs-source-dirs: src
-    other-modules: IntermediateExecises Problems1_10
+    other-modules: Problems11_20 IntermediateExecises Problems1_10
  

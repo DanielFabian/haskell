@@ -1,16 +1,3 @@
------------------------------------------------------------------------------
---
--- Module      :  Problems1_10
--- Copyright   :
--- License     :  AllRightsReserved
---
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
---
------------------------------------------------------------------------------
 
 module Problems1_10 where
 import Data.List
@@ -65,7 +52,7 @@ compress list = map head . group $ list
 -- pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
 --      = ["aaaa","b","cc","aa","d","eeee"]
 --pack :: Eq a => [a] -> [[a]]
-pack [] = []
+pack []     = []
 pack (x:xs) =
     let (group, rest) = span (==x) xs
     in (x:group) : pack rest
@@ -75,38 +62,3 @@ pack (x:xs) =
 -- encoded as lists (N E) where N is the number of duplicates of the element E.
 -- encode "aaaabccaadeeee" = [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
 encode list = map (\ group -> (length group, head group)) . group $ list
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
