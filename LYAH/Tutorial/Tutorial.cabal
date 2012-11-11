@@ -1,0 +1,23 @@
+name: Tutorial
+version: 0.0.1
+cabal-version: >=1.2
+build-type: Simple
+license: AllRightsReserved
+license-file: ""
+data-dir: ""
+ 
+library
+    build-depends: base -any
+    exposed-modules: Sandbox
+    exposed: True
+    buildable: True
+    hs-source-dirs: src
+    other-modules: IntermediateExecises
+ 
+executable Tutorial
+    build-depends: base -any
+    main-is: Main.hs
+    buildable: True
+    hs-source-dirs: src
+    other-modules: IntermediateExecises
+ 
