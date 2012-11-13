@@ -1,17 +1,3 @@
------------------------------------------------------------------------------
---
--- Module      :  Problems11_20
--- Copyright   :
--- License     :  AllRightsReserved
---
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
---
------------------------------------------------------------------------------
-
 module Problems11_20 where
 import Problems1_10
 import Data.List

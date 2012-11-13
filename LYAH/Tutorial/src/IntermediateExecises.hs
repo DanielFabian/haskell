@@ -19,17 +19,19 @@ class Fluffy f where
 -- Exercise 1
 -- Relative Difficulty: 1
 instance Fluffy [] where
-  furry = error "todo"
+  furry _ [] = []
+  furry f (x:xs) = f x : furry f xs
 
 -- Exercise 2
 -- Relative Difficulty: 1
 instance Fluffy Maybe where
-  furry = error "todo"
+  furry f Nothing = Nothing
+  furry f (Just x) = Just $ f x
 
 -- Exercise 3
 -- Relative Difficulty: 5
 instance Fluffy ((->) t) where
-  furry = error "todo"
+  furry f g = f . g
 
 newtype EitherLeft b a = EitherLeft (Either a b)
 newtype EitherRight a b = EitherRight (Either a b)
@@ -37,12 +39,14 @@ newtype EitherRight a b = EitherRight (Either a b)
 -- Exercise 4
 -- Relative Difficulty: 5
 instance Fluffy (EitherLeft t) where
-  furry = error "todo"
+  furry f (EitherLeft (Left x)) = EitherLeft $ Left $ f x
+  furry f (EitherLeft (Right x)) = EitherLeft $ Right x
 
 -- Exercise 5
 -- Relative Difficulty: 5
 instance Fluffy (EitherRight t) where
-  furry = error "todo"
+  furry f (EitherRight (Right x)) = EitherRight $ Right $ f x
+  furry f (EitherRight (Left x)) = EitherRight $ Left x
 
 class Misty m where
   banana :: (a -> m b) -> m a -> m b
@@ -51,7 +55,7 @@ class Misty m where
   -- Relative Difficulty: 3
   -- (use banana and/or unicorn)
   furry' :: (a -> b) -> m a -> m b
-  furry' = error "todo"
+  furry' f = banana $ unicorn . f
 
 -- Exercise 7
 -- Relative Difficulty: 2

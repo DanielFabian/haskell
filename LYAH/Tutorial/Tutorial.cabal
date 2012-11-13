@@ -4,20 +4,20 @@ cabal-version: >=1.2
 build-type: Simple
 license: AllRightsReserved
 license-file: ""
+description:  
 data-dir: ""
  
 library
     build-depends: base -any
-    exposed-modules: Sandbox
+    exposed-modules: IntermediateExecises Main Problems11_20
+                     Problems1_10 Problems21_30 Sandbox
     exposed: True
     buildable: True
     hs-source-dirs: src
-    other-modules: Problems11_20 IntermediateExecises Problems1_10
  
 executable Tutorial
     build-depends: base -any
     main-is: Main.hs
     buildable: True
     hs-source-dirs: src
-    other-modules: Problems11_20 IntermediateExecises Problems1_10
  
