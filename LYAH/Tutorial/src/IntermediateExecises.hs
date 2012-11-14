@@ -60,20 +60,22 @@ class Misty m where
 -- Exercise 7
 -- Relative Difficulty: 2
 instance Misty [] where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana _ [] = []
+  banana f list = concat $ map f list
+  unicorn f = [f]
 
 -- Exercise 8
 -- Relative Difficulty: 2
 instance Misty Maybe where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana _ Nothing = Nothing
+  banana f (Just x) = f x
+  unicorn f = Just f
 
 -- Exercise 9
 -- Relative Difficulty: 6
 instance Misty ((->) t) where
-  banana = error "todo"
-  unicorn = error "todo"
+  banana f g = \ x -> f (g x) x
+  unicorn x = (\ _ -> x)
 
 -- Exercise 10
 -- Relative Difficulty: 6

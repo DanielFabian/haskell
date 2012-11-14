@@ -15,6 +15,8 @@
 module Sandbox where
 
 import Data.List
+import Control.Applicative
+import Control.Monad
 
 doubleMe x = x + x
 doubleUs x y = doubleMe x + doubleMe y
@@ -36,17 +38,23 @@ stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(9
 firstTimeAbout1k = find (\(val,y,m,d) -> val > 1000) stock
 
 
-solveRPN = head . foldl calculateUPN [] . words
+solveRPN string = do
+    [result] <- foldM calculateUPN [] . words $ string
+    return result
 
-calculateUPN (y:x:rest) "+" = x + y : rest
-calculateUPN (y:x:rest) "*" = x * y : rest
-calculateUPN (y:x:rest) "/" = x / y : rest
-calculateUPN (y:x:rest) "-" = x - y : rest
-calculateUPN (y:x:rest) "^" = x ** y : rest
-calculateUPN (x:rest) "ln" = log x : rest
-calculateUPN (x:rest) "neg" = -x : rest
-calculateUPN list "sum" = [sum list]
-calculateUPN list number = read number : list
+calculateUPN (y:x:rest) "+" = return $ x + y : rest
+calculateUPN (y:x:rest) "*" = return $ x * y : rest
+calculateUPN (y:x:rest) "/" = return $ x / y : rest
+calculateUPN (y:x:rest) "-" = return $ x - y : rest
+calculateUPN (y:x:rest) "^" = return $ x ** y : rest
+calculateUPN (x:rest) "ln" = return $ log x : rest
+calculateUPN (x:rest) "neg" = return $ -x : rest
+calculateUPN list "sum" = return $ [sum list]
+calculateUPN list number = liftM (:list) (readMaybe number)
+
+readMaybe st = case reads st of
+                    [(x, "")] -> Just x
+                    _         -> Nothing
 
 data Section = Section { north :: Int, south :: Int, crossover :: Int } deriving (Show)
 type RoadSystem = [Section]
@@ -80,14 +88,16 @@ chunkify 0 _ = undefined
 chunkify _ [] = []
 chunkify n list = take n list : (chunkify n $ drop n list)
 
+data Option a = Some a | None
 
+instance Functor Option where
+    fmap _ None = None
+    fmap f (Some x) = Some (f x)
 
-
-
-
-
-
-
+instance Applicative Option where
+    pure = Some
+    None <*> _ = None
+    (Some f) <*> something = fmap f something
 
 
 

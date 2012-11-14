@@ -8,15 +8,15 @@ description:
 data-dir: ""
  
 library
-    build-depends: base -any
-    exposed-modules: IntermediateExecises Main Problems11_20
+    build-depends: base -any, mtl -any
+    exposed-modules: Chess IntermediateExecises Problems11_20
                      Problems1_10 Problems21_30 Sandbox
-    exposed: True
+    exposed: False
     buildable: True
     hs-source-dirs: src
  
 executable Tutorial
-    build-depends: base -any
+    build-depends: base -any, mtl -any
     main-is: Main.hs
     buildable: True
     hs-source-dirs: src
