@@ -34,3 +34,5 @@ in3 start = do
     moveKnight second
 
 canReachIn3 start end = end `elem` in3 start
+
+
