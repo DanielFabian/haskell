@@ -1,0 +1,24 @@
+name: Interpreter
+version: 0.0.1
+cabal-version: >=1.2
+build-type: Simple
+license: AllRightsReserved
+license-file: ""
+synopsis: A scheme interpreter
+description:  
+data-dir: ""
+ 
+executable Interpreter
+    build-depends: QuickCheck -any, base -any, parsec -any
+    main-is: Main.hs
+    buildable: True
+    hs-source-dirs: src
+    other-modules: Parser
+ 
+test-suite test-Interpreter
+    build-depends: QuickCheck -any, base -any, parsec -any
+    type: exitcode-stdio-1.0
+    main-is: Main.hs
+    buildable: True
+    cpp-options: -DMAIN_FUNCTION=testMain
+    hs-source-dirs: src
